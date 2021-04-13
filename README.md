@@ -1,6 +1,6 @@
 # stupid-compiler-benchmark
 
-This is the world's stupidest compiler benchmark. It compiles 50 1kloc files that prints "hello world" a bunch of times to the console.
+This is the world's stupidest compiler benchmark. It compiles 50 1kloc files that print "hello world" a bunch of times to the console.
 
 It is stupid, but it is also an apples-to-apples comparison, and indicates the order of magnitude of iteration speed we can expect.
 
