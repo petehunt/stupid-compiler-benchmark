@@ -1,6 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
+rm -f golang/*
 python3 generate_test_files.py
 rm -f java/*.class
 rm -f ts/*.js
@@ -9,6 +10,9 @@ rm -f ts/*.js
 
 echo 'Cold compile: java'
 (cd java && time javac *.java)
+
+echo 'Cold compile: golang'
+(cd golang && time go build *.go)
 
 echo
 echo 'Cold compile: esbuild (no typechecking)'

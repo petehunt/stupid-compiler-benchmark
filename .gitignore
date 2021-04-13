@@ -3,4 +3,6 @@ ts/*.ts
 ts/*.js
 java/*.java
 java/*.class
+golang/hello0
+golang/*.go
 *~
