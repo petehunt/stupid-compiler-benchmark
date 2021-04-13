@@ -1,0 +1,20 @@
+#!/bin/bash
+set -euo pipefail
+
+python3 generate_test_files.py
+rm -f java/*.class
+rm -f ts/*.js
+
+(cd ts && npm install)
+
+echo 'Cold compile: java'
+(cd java && time javac *.java)
+
+echo
+echo 'Cold compile: esbuild (no typechecking)'
+(cd ts && time ./node_modules/.bin/esbuild *.ts --outdir=. --sourcemap=inline --log-level=error)
+
+echo
+echo 'Cold compile: tsc (typechecking)'
+rm -f ts/*.js
+(cd ts && time ./node_modules/.bin/tsc *.ts --inlineSourceMap)

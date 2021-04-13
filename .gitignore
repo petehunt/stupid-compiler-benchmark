@@ -1,0 +1,6 @@
+ts/node_modules
+ts/*.ts
+ts/*.js
+java/*.java
+java/*.class
+*~
