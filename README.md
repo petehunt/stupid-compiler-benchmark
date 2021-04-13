@@ -26,4 +26,4 @@ user	0m4.825s
 sys	0m0.170s
 ```
 
-tsc with typechecking is about 3x slower than javac. esbuild is about 30x faster than javac.
+tsc with typechecking is about 2x slower than javac. esbuild is about 30x faster than javac.
