@@ -2,23 +2,26 @@
 set -euo pipefail
 
 rm -f golang/*
-python3 generate_test_files.py
 rm -f java/*.class
 rm -f ts/*.js
 
 (cd ts && npm install)
 
-echo 'Cold compile: java'
+python3 generate_test_files.py
+
+echo
+echo 'java'
 (cd java && time javac *.java)
 
-echo 'Cold compile: golang'
+echo
+echo 'golang'
 (cd golang && time go build *.go)
 
 echo
-echo 'Cold compile: esbuild (no typechecking)'
+echo 'TypeScript, no type checking (esbuild)'
 (cd ts && time ./node_modules/.bin/esbuild *.ts --outdir=. --sourcemap=inline --log-level=error)
 
 echo
-echo 'Cold compile: tsc (typechecking)'
+echo 'TypeScript, with type checking (tsc)'
 rm -f ts/*.js
 (cd ts && time ./node_modules/.bin/tsc *.ts --inlineSourceMap)
